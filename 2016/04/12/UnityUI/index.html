@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>UnityUI | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##The New UI
+先设置UI namespace
+Anchor 是对于父物体而言的，表示子UI物体距离父物体锚点的位置。Rect 到 Anchor点的距离是固定的。Sprite 把图象分成9部分，可以用来拉伸。ScrollRect 可以包括Rect比他大的子物体，用Mask遮挡其他部分。可以直接设置ScrollBar。RenderOrder 在hierarchy层级菜单中从上到下渲染，先渲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UnityUI">
+<meta property="og:url" content="http://yoursite.com/2016/04/12/UnityUI/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##The New UI
+先设置UI namespace
+Anchor 是对于父物体而言的，表示子UI物体距离父物体锚点的位置。Rect 到 Anchor点的距离是固定的。Sprite 把图象分成9部分，可以用来拉伸。ScrollRect 可以包括Rect比他大的子物体，用Mask遮挡其他部分。可以直接设置ScrollBar。RenderOrder 在hierarchy层级菜单中从上到下渲染，先渲">
+<meta property="og:updated_time" content="2016-04-13T23:45:22.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UnityUI">
+<meta name="twitter:description" content="##The New UI
+先设置UI namespace
+Anchor 是对于父物体而言的，表示子UI物体距离父物体锚点的位置。Rect 到 Anchor点的距离是固定的。Sprite 把图象分成9部分，可以用来拉伸。ScrollRect 可以包括Rect比他大的子物体，用Mask遮挡其他部分。可以直接设置ScrollBar。RenderOrder 在hierarchy层级菜单中从上到下渲染，先渲">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-UnityUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/UnityUI/" class="article-date">
+  <time datetime="2016-04-12T11:48:30.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UnityUI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##The New UI</p>
+<p>先设置UI namespace</p>
+<p>Anchor 是对于父物体而言的，表示子UI物体距离父物体锚点的位置。<br>Rect 到 Anchor点的距离是固定的。<br>Sprite 把图象分成9部分，可以用来拉伸。<br>ScrollRect 可以包括Rect比他大的子物体，用Mask遮挡其他部分。可以直接设置ScrollBar。<br>RenderOrder 在hierarchy层级菜单中从上到下渲染，先渲染的在后面（底层）。  </p>
+<p>##Using UI Tools</p>
+<p>对于2D和UI 把Texture改为Sprite<br>Preserve Aspect 使Image保持最小，不随父物体Rect改变<br>使用多个Canvas做各种菜单，用Panel固定菜单大小。<br>按住Shift 改变Anchor的同时使UI组件Rect随Anchor改变。<br>UI交互时，可以选择Static或Dynamic 可以把Slider的值作为参数。<br>在不同的场景使用同一物体或UI时，有两种方法：  </p>
+<ol>
+<li>使用Prefab，读取新场景时将Prefab实例化载入。  </li>
+<li>可以在Scenes间传递，在Load时不DontDestroyOnLoad()。  </li>
+</ol>
+<p>##Game Jam MEnu Template<br>public void Invoke(string methodName, float time);<br>Invoke 延迟调用方法。<br>Time.timeScale = 0 用来暂停时间  </p>
+<p>##Creating A Scene Selection Menu<br>UI + Loading Scene</p>
+<p>DontDestroyOnLoad(GameObject gameObject);<br>void OnLevelWasLoaded(int level);<br>public static void LoadScene(int sceneBuildIndex, SceneManagement.LoadSceneMode mode =<br>LoadSceneMode.Single);  </p>
+<p>##Panes Panels and Windows</p>
+<p>选择Panel时，可以修改主Canvas的大小用来Preview Panel随Canvas拖拽缩放的变化。<br>在GameControler中放入UI各种需要的方法。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/12/UnityUI/" data-id="cimzlad1t0000i0pinkytwbph" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/12/UnityUI/">UnityUI</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
